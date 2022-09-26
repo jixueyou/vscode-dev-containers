@@ -137,7 +137,7 @@ if ! type git > /dev/null 2>&1; then
 fi
 
 # Get closest match for version number specified
-find_version_from_git_tags TARGET_GO_VERSION "https://go.googlesource.com/go" "tags/go" "." "true"
+find_version_from_git_tags TARGET_GO_VERSION "https://github.com/go" "tags/go" "." "true"
 
 architecture="$(uname -m)"
 case $architecture in
@@ -180,7 +180,7 @@ if [ "${TARGET_GO_VERSION}" != "none" ] && ! type go > /dev/null 2>&1; then
             ((minor=minor-1))
             TARGET_GO_VERSION="${major}.${minor}"
             # Look for latest version from previous minor release
-            find_version_from_git_tags TARGET_GO_VERSION "https://go.googlesource.com/go" "tags/go" "." "true"
+            find_version_from_git_tags TARGET_GO_VERSION "https://github.com/go" "tags/go" "." "true"
         else 
             ((breakfix=breakfix-1))
             if [ "${breakfix}" = "0" ]; then
